@@ -48,36 +48,30 @@ def find_k_element(root, k):
     return None
 
 
-
-
 # Пример дерева
-root = None
-elements = [10, 5, 15, 3, 7, 12, 18]
+if __name__ == "__main__":
+    root = None
+    elements = [10, 5, 15, 3, 7, 12, 18]
+    for value in elements:
+        root = insert(root, value)
 
-for value in elements:
-    root = insert(root, value)
+    # Структура дерева:
+    #         10
+    #        /  \
+    #       5    15
+    #      / \   / \
+    #     3   7 12  18
 
-# Структура дерева
-#        10
-#       /  \
-#      5    15
-#     / \   / \
-#    3   7 12  18
+    print("--- Обход в глубину (Depth-First Search) ---")
+    sorted_list = inorder(root)
+    print(f"Элементы по возрастанию: {sorted_list}") 
 
-print("--- Обход в глубину(Depth‑First Search) ---")
-sorted_list = inorder(root)
-print(f"Элементы по возрастанию: {sorted_list}") 
+    print("\n--- Функция поиска ---")
+    print(f"Есть ли в дереве число 7? {search(root, 7)}")    
+    print(f"Есть ли в дереве число 99? {search(root, 99)}")  
 
+    print("\n--- Поиск k-го минимума ---")
+    k = 3
+    kth_min = find_k_element(root, k)
+    print(f"{k}-й по величине элемент (минимум) в дереве — это: {kth_min}")
 
-
-print("\n--- Функция поиска ---")
-print(f"Есть ли в дереве число 7? {search(root, 7)}")    
-print(f"Есть ли в дереве число 99? {search(root, 99)}")  
-
-
-print("\n--- Поиск k-го минимума ---")
-k = 3
-kth_min = find_k_element(root, k)
-print(f"{k}-й по величине элемент (минимум) в дереве — это: {kth_min}")
-
-    
