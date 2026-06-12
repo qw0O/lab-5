@@ -1,4 +1,5 @@
 class TreeNode:
+    """Класс для описания одного узла дерева."""
     def __init__(self, value):
         self.value = value      
         self.left = None        
@@ -29,15 +30,14 @@ def search(root, target):
         return search(root.right, target)
         
 def inorder(root, result=None):
-    """Обход в глубину, симметричный"""
+    """Обход в глубину, симметричный (Inorder)."""
     if result is None:
         result = []
     if root:
-        inorder(root.left, result)          # 1. левое поддерево
-        result.append(root.value)           # 2. узел
-        inorder(root.right, result)         # 3. правое поддерево
+        inorder(root.left, result)          # 1. левое поддерево (меньшие элементы)
+        result.append(root.value)           # 2. текущий узел
+        inorder(root.right, result)         # 3. правое поддерево (большие элементы)
     return result
-
 
 def find_k_element(root, k):
     """Найти k-й по величине элемент (1-й минимум, 2-й минимум и т.д.)."""
@@ -46,7 +46,6 @@ def find_k_element(root, k):
     if 1 <= k <= len(sorted_elements):
         return sorted_elements[k - 1]
     return None
-
 
 # Пример дерева
 if __name__ == "__main__":
@@ -74,4 +73,3 @@ if __name__ == "__main__":
     k = 3
     kth_min = find_k_element(root, k)
     print(f"{k}-й по величине элемент (минимум) в дереве — это: {kth_min}")
-
